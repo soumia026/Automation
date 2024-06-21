@@ -1,0 +1,21 @@
+.gradient-animation {
+    background: linear-gradient(-45deg, #F1EEDC, #E5DDC5, #BED7DC, #B3C8CF);
+	background-size: 400% 400%;
+	animation: gradient 9s ease infinite;
+  }
+  
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@font-face {
+	font-family: 'northStart';
+	src: url('./fonts/Northstar3D-4D3x.otf') format('opentype'),
+  }
