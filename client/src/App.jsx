@@ -93,21 +93,7 @@ function App() {
     }
   };
   const fetchCurrentBindings = async () => {
-    try {
-      const response = await fetch('http://localhost:4000/dhcp/binding/');
-
-      if (response.ok) {
-        const result = await response.json();
-        console.log('Current Bindings:', result);
-        setBindings(result)
-        setDisplay(true)
-        console.log(bindings)
-      } else {
-        console.error('Failed to fetch current bindings');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    setDisplay(true)
   };
 
   return (
@@ -118,7 +104,7 @@ function App() {
           <span className="text-7xl  font-bold bg-gradient-to-r from-[#76cddf] via-[#13a2b5] to-[#10afe4]   text-transparent bg-clip-text font-northStar">SHABAKA</span>
           <p>where you can configure, manage and monitor your network!</p>
         </span>
-        <div className="flex row-span-4 w-2/3 flex-col justify-self-center self-start items-center justify-center gap-6 px-2">
+        <div className="flex row-span-4 w-2/3 flex-col justify-self-center self-start items-center justify-center gap-4 px-2">
           <ul className="flex justify-around rounded-[2rem] w-full  border-4 border-[#10afe4]">
             { 
               items.map((item, index)=>(
@@ -185,7 +171,44 @@ function App() {
       >
          Display current bindings
       </Button>
+          {displayed &&
+            <div className="self-start h-[200px]  md:grid md:grid-rows-6 md:grid-cols-4 gap-6">
+  <h1 className="col-span-4 row-span-1">R1</h1>
+  
+  <span className="col-start-1 row-start-2 row-span-5">
+    <p className="font-bold">IP address</p>
+    <p>&nbsp;</p>
+    <p>192.168.1.2</p>
+    <p>192.168.1.3</p>
+    <p>192.168.1.4</p>
+  </span>
 
+  <span className="col-start-2 row-start-2 row-span-5">
+    <p className="font-bold">Client-ID/</p>
+    <p className="font-bold">Hardware address</p>
+    <p>0100.5056.30a6.b7</p>
+    <p>0100.567.30a6.b8</p>
+    <p>0100.567.30a6.b8</p>
+  </span>
+
+  <span className="col-start-3 row-start-2 flex flex-col row-span-5">
+    <p className="font-bold">Lease expiration</p>
+    <p>&nbsp;</p>
+    <p className="self-center">--</p>
+    <p className="self-center">--</p>
+    <p className="self-center">--</p>
+  </span>
+
+  <span className="col-start-4 row-start-2 row-span-5">
+    <p className="font-bold">Type</p>
+    <p>&nbsp;</p>
+    <p>Automatic</p>
+    <p>Automatic</p>
+    <p>Automatic</p>
+  </span>
+</div>
+
+          }
         </div>
       </div>
     </div>
